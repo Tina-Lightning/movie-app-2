@@ -30,4 +30,34 @@ router.route("/add").post((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.route("/:id").get((req, res) => {
+  Movie.findById(req.params.id)
+    .then((movie) => res.json(movie))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+router.route("/:id").delete((req, res) => {
+  Movie.findByIdAndDelete(req.params.id)
+    .then(() => res.json("Movie deleted"))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+router.route("/update/:id").post((req, res) => {
+  Movie.findById(req.params.id)
+    .then((movie) => {
+      movie.username = req.body.username;
+      movie.title = req.body.title;
+      movie.year = req.body.year;
+      movie.image = req.body.image;
+      movie.rating = Number(req.body.rating);
+      movie.link = req.body.link;
+
+      movie
+        .save()
+        .then(() => res.json("Movie updated"))
+        .catch((err) => res.status(400).json("Error: " + err));
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 module.exports = router;

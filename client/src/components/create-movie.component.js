@@ -25,7 +25,7 @@ export default class CreateMovie extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:5000/users").then((response) => {
+    axios.get("http://localhost:5000/users/").then((response) => {
       if (response.data.length > 0) {
         this.setState({
           users: response.data.map((user) => user.username),
@@ -84,7 +84,7 @@ export default class CreateMovie extends Component {
     console.log(movie);
 
     axios
-      .post("http://localhost:5000/movies/add", movie)
+      .post("http://localhost:5000/movies/add/", movie)
       .then((res) => console.log(res.data));
 
     window.location = "/";

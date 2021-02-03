@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 export default class CreateMovie extends Component {
   constructor(props) {
@@ -24,9 +25,13 @@ export default class CreateMovie extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      users: ["test user"],
-      username: "test user",
+    axios.get("http://localhost:5000/users").then((response) => {
+      if (response.data.length > 0) {
+        this.setState({
+          users: response.data.map((user) => user.username),
+          username: response.data[0].username,
+        });
+      }
     });
   }
 
@@ -77,6 +82,10 @@ export default class CreateMovie extends Component {
       link: this.state.link,
     };
     console.log(movie);
+
+    axios
+      .post("http://localhost:5000/movies/add", movie)
+      .then((res) => console.log(res.data));
 
     window.location = "/";
   }
@@ -133,7 +142,7 @@ export default class CreateMovie extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Rating:</label>
+            <label>IMDb Rating:</label>
             <input
               type="text"
               required

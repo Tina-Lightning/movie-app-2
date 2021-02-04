@@ -8,6 +8,7 @@ export default class EditMovie extends Component {
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeYear = this.onChangeYear.bind(this);
+    this.onChangeSeason = this.onChangeSeason.bind(this);
     this.onChangeImage = this.onChangeImage.bind(this);
     this.onChangeRating = this.onChangeRating.bind(this);
     this.onChangeLink = this.onChangeLink.bind(this);
@@ -17,6 +18,7 @@ export default class EditMovie extends Component {
       username: "",
       title: "",
       year: "",
+      season: "",
       image: "",
       rating: "",
       link: "",
@@ -32,6 +34,7 @@ export default class EditMovie extends Component {
           username: response.data.username,
           title: response.data.title,
           year: response.data.year,
+          season: response.data.season,
           image: response.data.image,
           rating: response.data.rating,
           link: response.data.link,
@@ -68,6 +71,12 @@ export default class EditMovie extends Component {
     });
   }
 
+  onChangeSeason(e) {
+    this.setState({
+      season: e.target.value,
+    });
+  }
+
   onChangeImage(e) {
     this.setState({
       image: e.target.value,
@@ -92,6 +101,7 @@ export default class EditMovie extends Component {
       username: this.state.username,
       title: this.state.title,
       year: this.state.year,
+      season: this.state.season,
       image: this.state.image,
       rating: this.state.rating,
       link: this.state.link,
@@ -140,7 +150,7 @@ export default class EditMovie extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Year:</label>
+            <label>Year Released:</label>
             <input
               type="text"
               required
@@ -150,13 +160,13 @@ export default class EditMovie extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Image:</label>
+            <label>Season:</label>
             <input
               type="text"
               required
               className="form-control"
-              value={this.state.image}
-              onChange={this.onChangeImage}
+              value={this.state.season}
+              onChange={this.onChangeSeason}
             />
           </div>
           <div className="form-group">
@@ -179,7 +189,16 @@ export default class EditMovie extends Component {
               onChange={this.onChangeLink}
             />
           </div>
-
+          <div className="form-group">
+            <label>Image:</label>
+            <input
+              type="text"
+              required
+              className="form-control"
+              value={this.state.image}
+              onChange={this.onChangeImage}
+            />
+          </div>
           <div className="form-group">
             <input
               type="submit"

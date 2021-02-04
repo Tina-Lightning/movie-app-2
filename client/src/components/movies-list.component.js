@@ -1,26 +1,38 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./style.css";
 
 const Movie = (props) => (
-  <tr>
-    <td>{props.movie.username}</td>
-    <td>{props.movie.title}</td>
-    <td>{props.movie.year}</td>
-    <td>{props.movie.image}</td>
-    <td>{props.movie.rating}</td>
-    <td>
-      <Link to={"/edit/" + props.movie._id}>edit</Link> |{" "}
-      <a
-        href="#"
-        onClick={() => {
-          props.deleteMovie(props.movie._id);
-        }}
-      >
-        delete
-      </a>
-    </td>
-  </tr>
+  <div className="card col-sm-3">
+    <a href={props.movie.link}>
+      <img
+        className="card-img-top"
+        src={props.movie.image}
+        alt="Card image cap"
+      />
+    </a>
+    <div className="card-body">
+      <p className="card-text">
+        <span className="movieTitle">{props.movie.title}</span>
+        {/* <span className="movieYear">{props.movie.year}</span> */}
+      </p>
+      <p className="card-text">Season: {props.movie.season}</p>
+      <p className="card-text">Year Released: {props.movie.year}</p>
+      <p className="card-text">IMDb Rating: {props.movie.rating}</p>
+      <p>
+        <Link to={"/edit/" + props.movie._id}>edit</Link> |{" "}
+        <a
+          href="#"
+          onClick={() => {
+            props.deleteMovie(props.movie._id);
+          }}
+        >
+          delete
+        </a>
+      </p>
+    </div>
+  </div>
 );
 
 export default class MoviesList extends Component {
@@ -52,7 +64,7 @@ export default class MoviesList extends Component {
     });
   }
 
-  movieList() {
+  movieCard() {
     return this.state.movies.map((currentmovie) => {
       return (
         <Movie
@@ -67,20 +79,8 @@ export default class MoviesList extends Component {
   render() {
     return (
       <div>
-        <h3>Watched Movies</h3>
-        <table className="table">
-          <thead className="thead-light">
-            <tr>
-              <th>Username</th>
-              <th>Title</th>
-              <th>Year</th>
-              <th>Image</th>
-              <th>IMDB Rating</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>{this.movieList()}</tbody>
-        </table>
+        <h3>Shows Watched:</h3>
+        <div className="row">{this.movieCard()}</div>
       </div>
     );
   }

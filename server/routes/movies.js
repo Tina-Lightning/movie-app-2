@@ -11,6 +11,7 @@ router.route("/add").post((req, res) => {
   const username = req.body.username;
   const title = req.body.title;
   const year = req.body.year;
+  const season = req.body.season;
   const image = req.body.image;
   const rating = Number(req.body.rating);
   const link = req.body.link;
@@ -19,6 +20,7 @@ router.route("/add").post((req, res) => {
     username,
     title,
     year,
+    season,
     image,
     rating,
     link,
@@ -48,6 +50,7 @@ router.route("/update/:id").post((req, res) => {
       movie.username = req.body.username;
       movie.title = req.body.title;
       movie.year = req.body.year;
+      movie.season = req.body.season;
       movie.image = req.body.image;
       movie.rating = Number(req.body.rating);
       movie.link = req.body.link;

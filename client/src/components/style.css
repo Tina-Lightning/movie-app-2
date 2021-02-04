@@ -1,0 +1,16 @@
+.card {
+  /* width: 16rem; */
+  /* display: inline-block; */
+  margin: 0 auto;
+  /* float: none; */
+  margin-bottom: 10px;
+}
+
+.movieTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.movieYear {
+  font-style: italic;
+  margin-left: 1rem;
+}

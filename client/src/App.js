@@ -11,8 +11,8 @@ import CreateUser from "./components/create-user.component";
 function App() {
   return (
     <Router>
+      <Navbar />
       <div className="container">
-        <Navbar />
         <br />
         <Route path="/" exact component={MoviesList} />
         <Route path="/edit/:id" component={EditMovie} />

@@ -7,7 +7,7 @@ const Movie = (props) => (
       <img
         className="card-img-top"
         src={props.movie.image}
-        alt="Card image cap"
+        alt="Movie Poster"
       />
     </a>
     <div className="card-body">
@@ -23,15 +23,20 @@ const Movie = (props) => (
       <p className="card-text">Year Released: {props.movie.year}</p>
       <p className="card-text">IMDb Rating: {props.movie.rating}</p>
       <p>
-        <Link to={"/edit/" + props.movie._id}>edit</Link> |{" "}
-        <a
-          href="#"
+        <Link to={"/edit/" + props.movie._id}>
+          <button type="button" className="btn btn-outline-primary btn-sm">
+            edit
+          </button>
+        </Link>
+        <button
+          type="button"
           onClick={() => {
             props.deleteMovie(props.movie._id);
           }}
+          className="btn btn-outline-danger btn-sm"
         >
           delete
-        </a>
+        </button>
       </p>
     </div>
   </div>

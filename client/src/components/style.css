@@ -15,3 +15,7 @@
   font-style: italic;
   margin-left: 1rem;
 }
+
+button {
+  margin: 0 5px 0 0;
+}

@@ -3,14 +3,16 @@ import axios from "axios";
 import "./style.css";
 import Movie from "./movie.component";
 
-function MoviesList(props) {
+function MoviesList() {
   const [movies, setMovies] = useState([]);
 
-  useEffect(async () => {
-    const result = await axios.get("http://localhost:5000/movies/");
-
-    setMovies(result.data);
-  });
+  useEffect(() => {
+    async function fetchData() {
+      const result = await axios.get("http://localhost:5000/movies/");
+      setMovies(result.data);
+    }
+    fetchData();
+  }, []);
 
   const deleteMovie = (id) => {
     axios

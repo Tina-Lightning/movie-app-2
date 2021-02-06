@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-export default class EditMovie extends Component {
+export default class CreateMovie extends Component {
   constructor(props) {
     super(props);
 
@@ -27,27 +27,11 @@ export default class EditMovie extends Component {
   }
 
   componentDidMount() {
-    axios
-      .get("http://localhost:5000/movies/" + this.props.match.params.id)
-      .then((response) => {
-        this.setState({
-          username: response.data.username,
-          title: response.data.title,
-          year: response.data.year,
-          season: response.data.season,
-          image: response.data.image,
-          rating: response.data.rating,
-          link: response.data.link,
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
     axios.get("http://localhost:5000/users/").then((response) => {
       if (response.data.length > 0) {
         this.setState({
           users: response.data.map((user) => user.username),
+          username: response.data[0].username,
         });
       }
     });
@@ -109,10 +93,7 @@ export default class EditMovie extends Component {
     console.log(movie);
 
     axios
-      .post(
-        "http://localhost:5000/movies/update/" + this.props.match.params.id,
-        movie
-      )
+      .post("http://localhost:5000/movies/add/", movie)
       .then((res) => console.log(res.data));
 
     window.location = "/";
@@ -121,7 +102,7 @@ export default class EditMovie extends Component {
   render() {
     return (
       <div>
-        <h3>Edit TV Show</h3>
+        <h3>Add New TV Show</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Username:</label>
@@ -202,7 +183,7 @@ export default class EditMovie extends Component {
           <div className="form-group">
             <input
               type="submit"
-              value="Edit TV Show"
+              value="Add TV Show"
               className="btn btn-primary"
             />
           </div>

@@ -1,54 +1,19 @@
-import React, { useState, useEffect, setState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
-function CreateMovie() {
-  const [username, setUsername] = useState("");
+function CreateMovie(props) {
+  //const [username, setUsername] = useState("");
   const [title, setTitle] = useState("");
   const [year, setYear] = useState("");
   const [season, setSeason] = useState("");
   const [image, setImage] = useState("");
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState("");
   const [link, setLink] = useState("");
-  const [users, setUsers] = useState({});
-
-  useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get("http://localhost:5000/users/");
-
-      if (response.data.length > 0) {
-        setUsers(response.data.map((user) => user.username));
-        setUsername(response.data[0].username);
-      }
-    }
-    fetchData();
-  }, []);
-
-  console.log(users);
-  console.log(username);
-
-  //useEffect(() => console.log("mounted or updated"));
-
-  //   useEffect(() => {
-  //     const getAllUsers = () => {
-  //       axios
-  //         .get("http://localhost:5000/users/")
-  //         .then((response) => {
-  //           if (response.data.length > 0) {
-  //             setUsers(response.data.map((user) => user.username));
-  //             setUsername(response.data[0].username);
-  //           }
-  //         })
-  //         .catch((error) => console.error(`Error: ${error}`));
-  //     };
-  //     getAllUsers();
-  //     // console.log(users);
-  //     // console.log(username);
-  //   }, [users, username]);
 
   const onSubmit = (e) => {
     e.preventDefault();
     const movie = {
-      username: username,
+      //username: username,
       title: title,
       year: year,
       season: season,
@@ -69,23 +34,6 @@ function CreateMovie() {
     <div>
       <h3>Add New TV Show</h3>
       <form onSubmit={onSubmit}>
-        <div className="form-group">
-          <label>Username:</label>
-          {/* <select
-            ref="userInput"
-            required
-            className="form-control"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            // onChange={onChangeUsername}
-          >
-            {users.map((user) => (
-              <option key={user} value={user}>
-                {user}
-              </option>
-            ))}
-          </select> */}
-        </div>
         <div className="form-group">
           <label>Title:</label>
           <input

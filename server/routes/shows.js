@@ -1,11 +1,9 @@
 const router = require("express").Router();
-let Movie = require("../models/movie.model");
+let Show = require("../models/show.model");
 
 router.route("/").get((req, res) => {
-  Movie.find()
-    .then((movies) =>
-      res.json(movies.sort((a, b) => b.createdAt - a.createdAt))
-    )
+  Show.find()
+    .then((shows) => res.json(shows.sort((a, b) => b.createdAt - a.createdAt)))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
@@ -18,7 +16,7 @@ router.route("/add").post((req, res) => {
   const rating = Number(req.body.rating);
   const link = req.body.link;
 
-  const newMovie = new Movie({
+  const newShow = new Show({
     username,
     title,
     year,
@@ -28,38 +26,38 @@ router.route("/add").post((req, res) => {
     link,
   });
 
-  newMovie
+  newShow
     .save()
-    .then(() => res.json("Movie added!"))
+    .then(() => res.json("Show added!"))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
 router.route("/:id").get((req, res) => {
-  Movie.findById(req.params.id)
-    .then((movie) => res.json(movie))
+  Show.findById(req.params.id)
+    .then((show) => res.json(show))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
 router.route("/:id").delete((req, res) => {
-  Movie.findByIdAndDelete(req.params.id)
-    .then(() => res.json("Movie deleted"))
+  Show.findByIdAndDelete(req.params.id)
+    .then(() => res.json("Show deleted"))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
 router.route("/update/:id").post((req, res) => {
-  Movie.findById(req.params.id)
-    .then((movie) => {
-      movie.username = req.body.username;
-      movie.title = req.body.title;
-      movie.year = req.body.year;
-      movie.season = req.body.season;
-      movie.image = req.body.image;
-      movie.rating = Number(req.body.rating);
-      movie.link = req.body.link;
+  Show.findById(req.params.id)
+    .then((show) => {
+      show.username = req.body.username;
+      show.title = req.body.title;
+      show.year = req.body.year;
+      show.season = req.body.season;
+      show.image = req.body.image;
+      show.rating = Number(req.body.rating);
+      show.link = req.body.link;
 
-      movie
+      show
         .save()
-        .then(() => res.json("Movie updated"))
+        .then(() => res.json("Show updated"))
         .catch((err) => res.status(400).json("Error: " + err));
     })
     .catch((err) => res.status(400).json("Error: " + err));

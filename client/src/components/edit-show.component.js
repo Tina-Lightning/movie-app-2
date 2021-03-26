@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-export default class EditMovie extends Component {
+export default class EditShow extends Component {
   constructor(props) {
     super(props);
 
@@ -28,7 +28,7 @@ export default class EditMovie extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/movies/" + this.props.match.params.id)
+      .get("http://localhost:5000/shows/" + this.props.match.params.id)
       .then((response) => {
         this.setState({
           username: response.data.username,
@@ -97,7 +97,7 @@ export default class EditMovie extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const movie = {
+    const show = {
       username: this.state.username,
       title: this.state.title,
       year: this.state.year,
@@ -106,12 +106,12 @@ export default class EditMovie extends Component {
       rating: this.state.rating,
       link: this.state.link,
     };
-    console.log(movie);
+    console.log(show);
 
     axios
       .post(
-        "http://localhost:5000/movies/update/" + this.props.match.params.id,
-        movie
+        "http://localhost:5000/shows/update/" + this.props.match.params.id,
+        show
       )
       .then((res) => console.log(res.data));
 

@@ -25,10 +25,10 @@ connection.once("open", () => {
 });
 
 // require the files and use the files
-const moviesRouter = require("./routes/movies");
+const showsRouter = require("./routes/shows");
 const usersRouter = require("./routes/users");
-// when someone goes to our url/movies, its going to load everything in the moviesRouter
-app.use("/movies", moviesRouter);
+// when someone goes to our url/shows, its going to load everything in the showsRouter
+app.use("/shows", showsRouter);
 app.use("/users", usersRouter);
 
 // what starts the server

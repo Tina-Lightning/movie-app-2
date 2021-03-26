@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function CreateMovie(props) {
+function CreateShow(props) {
   //const [username, setUsername] = useState("");
   const [title, setTitle] = useState("");
   const [year, setYear] = useState("");
@@ -12,7 +12,7 @@ function CreateMovie(props) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const movie = {
+    const show = {
       //username: username,
       title: title,
       year: year,
@@ -21,10 +21,10 @@ function CreateMovie(props) {
       rating: rating,
       link: link,
     };
-    console.log(movie);
+    console.log(show);
 
     axios
-      .post("http://localhost:5000/movies/add/", movie)
+      .post("http://localhost:5000/shows/add/", show)
       .then((res) => console.log(res.data));
 
     window.location = "/";
@@ -106,4 +106,4 @@ function CreateMovie(props) {
   );
 }
 
-export default CreateMovie;
+export default CreateShow;

@@ -13,7 +13,7 @@ const Navbar = () => {
         <ul className="navbar-nav mr-auto">
           <li className="navbar-item">
             <Link to="/" className="nav-link">
-              Movies
+              Shows
             </Link>
           </li>
           <li className="navbar-item">

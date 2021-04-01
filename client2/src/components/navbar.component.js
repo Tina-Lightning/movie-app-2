@@ -12,8 +12,8 @@ const Navbar = () => {
       <div className="collpase navbar-collapse">
         <ul className="navbar-nav mr-auto">
           <li className="navbar-item">
-            <Link to="/" className="nav-link">
-              Shows
+            <Link to="/myshows/" className="nav-link">
+              Saved Shows
             </Link>
           </li>
           <li className="navbar-item">

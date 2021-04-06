@@ -15,7 +15,7 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="shows/:id" children={<SingleShow />} />
+        <Route path="/shows/:id" children={<SingleShow />} />
         <Route path="*">
           <Error />
         </Route>

@@ -15,10 +15,11 @@ const AppProvider = ({ children }) => {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data);
-      console.log("Name of show: " + data.results[0].name);
+      //console.log(data);
+      //console.log("Name of show: " + data.results[0].name);
+      //console.log("Total results: " + data.total_results);
 
-      if (data.results.total_results > 0) {
+      if (data.total_results > 0) {
         setShows(data.results);
         setError({ show: false, msg: "" });
       } else {

@@ -4,9 +4,10 @@ import Shows from "./Shows";
 
 const Home = () => {
   return (
-    <div>
-      <h2>Homepage</h2>
-    </div>
+    <main>
+      <SearchForm />
+      <Shows />
+    </main>
   );
 };
 

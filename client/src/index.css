@@ -11,12 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+/* .show-box {
+  margin: 10px 0;
+} */
 .show img {
   width: 100%;
-  height: 400px;
+  height: 66%;
   display: block;
   object-fit: cover;
 }
+/* .card-img-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0px;
+  left: 0;
+  padding: 1.25rem;
+  border-radius: calc(0.25rem - 1px);
+} */
 .show-info {
   position: absolute;
   bottom: 0;
@@ -26,6 +38,7 @@ code {
   background: rgba(0, 0, 0, 0.6);
   transform: translateY(100%);
   transition: all 0.3s linear;
+  visibility: hidden;
 }
 .show-info h4 {
   color: #fff;
@@ -37,4 +50,5 @@ code {
 }
 .show:hover .show-info {
   transform: translateY(0);
+  visibility: visible;
 }

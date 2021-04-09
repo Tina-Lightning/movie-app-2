@@ -17,7 +17,7 @@ const Shows = () => {
         {shows.map((show) => {
           console.log(show);
           const {
-            id: id,
+            id,
             poster_path: poster,
             name: title,
             first_air_date: date,

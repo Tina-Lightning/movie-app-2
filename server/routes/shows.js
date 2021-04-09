@@ -8,22 +8,18 @@ router.route("/").get((req, res) => {
 });
 
 router.route("/add").post((req, res) => {
-  const username = req.body.username;
+  const poster = req.body.poster;
   const title = req.body.title;
-  const year = req.body.year;
-  const season = req.body.season;
-  const image = req.body.image;
-  const rating = Number(req.body.rating);
-  const link = req.body.link;
+  const overview = req.body.overview;
+  const date = req.body.date;
+  const type = req.body.type;
 
   const newShow = new Show({
-    username,
+    poster,
     title,
-    year,
-    season,
-    image,
-    rating,
-    link,
+    overview,
+    date,
+    type,
   });
 
   newShow
@@ -47,13 +43,11 @@ router.route("/:id").delete((req, res) => {
 router.route("/update/:id").post((req, res) => {
   Show.findById(req.params.id)
     .then((show) => {
-      show.username = req.body.username;
+      show.poster = req.body.poster;
       show.title = req.body.title;
-      show.year = req.body.year;
-      show.season = req.body.season;
-      show.image = req.body.image;
-      show.rating = Number(req.body.rating);
-      show.link = req.body.link;
+      show.overview = req.body.overview;
+      show.date = req.body.date;
+      show.type = req.body.type;
 
       show
         .save()

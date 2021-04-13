@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { API_ENDPOINT } from "./context";
 
@@ -51,28 +50,6 @@ const SingleShow = () => {
     first_air_date: date,
     type: type,
   } = show;
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const show = {
-      poster: poster,
-      title: title,
-      overview: overview,
-      date: date,
-      type: type,
-    };
-    console.log(show);
-
-    // this is going to send an HTTP post request to the back end endpoint, and the endpoint is expecting a JSON object (and that's exercise)
-    axios
-      .post("http://localhost:5000/shows/add", show)
-      .then((res) => console.log(res.data));
-
-    // take the person back to the homepage when the form is submitted
-    //window.location = "/";
-  };
-
   return (
     <section>
       <img
@@ -90,14 +67,6 @@ const SingleShow = () => {
           back to shows
         </Link>
       </div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" required value={poster} />
-        <input type="text" required value={title} />
-        <input type="text" required value={overview} />
-        <input type="text" required value={date} />
-        <input type="text" required value={type} />
-        <input type="submit" value="Add TV Show" className="btn btn-primary" />
-      </form>
     </section>
   );
 };

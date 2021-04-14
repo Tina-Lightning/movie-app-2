@@ -8,7 +8,7 @@ const AppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState({ show: false, msg: "" });
   const [shows, setShows] = useState([]);
-  const [query, setQuery] = useState("friend");
+  const [query, setQuery] = useState("");
 
   const fetchShows = async (url) => {
     setIsLoading(true);

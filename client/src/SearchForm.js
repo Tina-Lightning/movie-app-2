@@ -8,7 +8,7 @@ const SearchForm = () => {
       <h2>search movies</h2>
       <input
         type="text"
-        className="form-input"
+        className="form-input input-border"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />

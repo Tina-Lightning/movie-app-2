@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Moment from "react-moment";
 import { useParams, Link } from "react-router-dom";
 import { API_ENDPOINT } from "./context";
 
@@ -74,31 +75,65 @@ const SingleShow = () => {
   };
 
   return (
-    <section>
-      <img
-        src={
-          poster === null ? url : `https://image.tmdb.org/t/p/w500/${poster}`
-        }
-        alt={title}
-      />
-      <div className="single-movie-info">
-        <h2>{title}</h2>
-        <p>{overview}</p>
-        <h4>{date}</h4>
-        <h4>{type}</h4>
-        <Link to="/" className="btn btn-primary">
-          back to shows
-        </Link>
+    <div class="container-fluid single-show-box">
+      <div className="row">
+        <section className="col-md-8 mx-auto">
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <img
+                className="center-block"
+                src={
+                  poster === null
+                    ? url
+                    : `https://image.tmdb.org/t/p/w500/${poster}`
+                }
+                alt={title}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="text"
+                hidden
+                value={`https://image.tmdb.org/t/p/w500/${poster}`}
+              />
+            </div>
+            <div className="form-group">
+              <input className="show-title" value={title} />
+            </div>
+            <div className="form-group">
+              <span
+                class="input"
+                className="show-overview"
+                role="textbox"
+                value={overview}
+                contenteditable
+              >
+                {overview}
+              </span>
+            </div>
+            <div className="form-group row">
+              <label class="col-sm-3 col-form-label show-date">
+                First Air Date:
+              </label>
+              <div class="col-sm-9">
+                <input className="show-date" value={date} />
+              </div>
+            </div>
+            <div className="form-group row">
+              <label className="col-sm-3 col-form-label show-type">
+                Type of Show:
+              </label>
+              <div className="col-sm-9">
+                <input className="show-date" value={type} />
+              </div>
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Add TV Show
+            </button>
+          </form>
+        </section>
       </div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" required value={poster} />
-        <input type="text" required value={title} />
-        <input type="text" required value={overview} />
-        <input type="text" required value={date} />
-        <input type="text" required value={type} />
-        <input type="submit" value="Add TV Show" className="btn btn-primary" />
-      </form>
-    </section>
+    </div>
   );
 };
 

@@ -13,7 +13,7 @@ const Shows = () => {
   }
   return (
     <div className="container">
-      <div class="row">
+      <div className="row">
         {shows.map((show) => {
           console.log(show);
           const {
@@ -23,7 +23,7 @@ const Shows = () => {
             first_air_date: date,
           } = show;
           return (
-            <div class="col-sm-4">
+            <div className="col-sm-4">
               <div className="card bg-dark text-white">
                 <Link to={`/shows/${id}`} key={id}>
                   <article className="show">

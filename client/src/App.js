@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./Home";
 import SingleShow from "./SingleShow";
+import SavedShows from "./SavedShows";
 import Navbar from "./Navbar";
 import Error from "./Error";
 
@@ -14,6 +15,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route exact path="/myshows">
+          <SavedShows />
         </Route>
         <Route path="/shows/:id" children={<SingleShow />} />
         <Route path="*">

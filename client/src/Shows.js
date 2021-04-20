@@ -23,23 +23,24 @@ const Shows = () => {
             first_air_date: date,
           } = show;
           return (
-            <div className="col-sm-4">
-              <div className="card bg-dark text-white">
+            <div className="show-container">
+              <div className="content">
                 <Link to={`/shows/${id}`} key={id}>
-                  <article className="show">
-                    <img
-                      src={
-                        poster === null
-                          ? url
-                          : `https://image.tmdb.org/t/p/w500/${poster}`
-                      }
-                      alt={title}
-                    />
-                    <div class="card-img-overlay show-info">
-                      <h5 className="card-title">{title}</h5>
-                      <p className="card-text">{date}</p>
-                    </div>
-                  </article>
+                  <div className="content-overlay"></div>
+                  <img
+                    src={
+                      poster === null
+                        ? url
+                        : `https://image.tmdb.org/t/p/w500/${poster}`
+                    }
+                    alt={title}
+                    className="content-image"
+                  />
+
+                  <div className="content-details fadeIn-bottom">
+                    <h3 className="content-title">{title}</h3>
+                    <p className="content-text">{date}</p>
+                  </div>
                 </Link>
               </div>
             </div>

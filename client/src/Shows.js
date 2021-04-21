@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import { useGlobalContext } from "./context";
 import { Link } from "react-router-dom";
 
@@ -15,13 +16,13 @@ const Shows = () => {
     <div className="container">
       <div className="row">
         {shows.map((show) => {
-          console.log(show);
           const {
             id,
             poster_path: poster,
             name: title,
             first_air_date: date,
           } = show;
+
           return (
             <div className="show-container">
               <div className="content">
@@ -39,7 +40,11 @@ const Shows = () => {
 
                   <div className="content-details fadeIn-bottom">
                     <h3 className="content-title">{title}</h3>
-                    <p className="content-text">{date}</p>
+                    <p className="content-text">
+                      <strong>Premier Date:</strong>
+                      <br />
+                      {moment(date).format("MMMM Do, YYYY")}
+                    </p>
                   </div>
                 </Link>
               </div>

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
+import moment from "moment";
 import axios from "axios";
 import { useGlobalContext } from "./context";
 import { Link } from "react-router-dom";
 
-const url =
+const photo_url =
   "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png";
 
-function SavedShows() {
+const SavedShows = () => {
   const { isLoading } = useGlobalContext();
   const [savedShows, setSavedShows] = useState("");
 
@@ -32,17 +33,6 @@ function SavedShows() {
     return <div className="loading"></div>;
   }
 
-  //   return (
-  //     <div className="container">
-  //       <div className="row">
-  //         <ul>
-  //           {savedShows.map((show) => (
-  //             <li>{show.title}</li>
-  //           ))}
-  //         </ul>
-  //       </div>
-  //     </div>
-
   if (!savedShows) {
     return <div className="loading"></div>;
   } else {
@@ -50,23 +40,28 @@ function SavedShows() {
       <div className="container">
         <div className="row">
           {savedShows.map((show) => (
-            <div className="col-sm-4">
-              <div className="card bg-dark text-white">
+            <div className="show-container">
+              <div className="content">
                 <Link to={`/shows/${show.id}`} key={show.id}>
-                  <article className="show">
-                    <img
-                      src={
-                        show.poster === null
-                          ? url
-                          : `https://image.tmdb.org/t/p/w500/${show.poster}`
-                      }
-                      alt={show.title}
-                    />
-                    <div class="card-img-overlay show-info">
-                      <h5 className="card-title">{show.title}</h5>
-                      <p className="card-text">{show.date}</p>
-                    </div>
-                  </article>
+                  <div className="content-overlay"></div>
+                  <img
+                    src={
+                      show.poster === null
+                        ? photo_url
+                        : `https://image.tmdb.org/t/p/w500/${show.poster}`
+                    }
+                    alt={show.title}
+                    className="content-image"
+                  />
+
+                  <div className="content-details fadeIn-bottom">
+                    <h3 className="content-title">{show.title}</h3>
+                    <p className="content-text">
+                      <strong>Premier Date:</strong>
+                      <br />
+                      {moment(show.date).format("MMMM Do, YYYY")}
+                    </p>
+                  </div>
                 </Link>
               </div>
             </div>
@@ -75,6 +70,6 @@ function SavedShows() {
       </div>
     );
   }
-}
+};
 
 export default SavedShows;

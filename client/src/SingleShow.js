@@ -75,7 +75,7 @@ const SingleShow = () => {
   };
 
   return (
-    <div class="container-fluid single-show-box">
+    <div className="container d-flex justify-content-center mt-4">
       <div className="row">
         <section className="col-md-8 mx-auto">
           <form onSubmit={handleSubmit}>
@@ -127,8 +127,8 @@ const SingleShow = () => {
                 <input className="show-date" value={type} />
               </div>
             </div>
-            <button type="submit" className="btn btn-primary">
-              Add TV Show
+            <button type="submit" className="btn btn-primary btn-block mb-5">
+              Add TV Show to Watched List
             </button>
           </form>
         </section>

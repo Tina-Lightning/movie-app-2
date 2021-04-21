@@ -19,9 +19,9 @@ input {
   border: 0;
   -webkit-appearance: none;
 }
-.single-show-box {
+/* .single-show-box {
   margin-top: 20px;
-}
+} */
 .center-block {
   width: 50%;
   display: block;
@@ -170,8 +170,8 @@ input {
 input.form-control:focus {
   box-shadow: none;
   border: 1.5px solid #e3e6ed;
-  background-color: #f7f8fd;
-  letter-spacing: 1px;
+  /* background-color: #f7f8fd; */
+  /* letter-spacing: 1px; */
 }
 
 .btn-primary {
@@ -186,4 +186,6 @@ input.form-control:focus {
 .text {
   font-size: 13px;
   color: #9ca1a4;
+}
+.error {
 }

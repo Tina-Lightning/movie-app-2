@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Moment from "react-moment";
+import moment from "moment";
 import { useParams, Link } from "react-router-dom";
 import { API_ENDPOINT } from "./context";
 
@@ -51,6 +51,7 @@ const SingleShow = () => {
     overview: overview,
     first_air_date: date,
     type: type,
+    vote_average: vote_average,
   } = show;
 
   const handleSubmit = (e) => {
@@ -62,6 +63,7 @@ const SingleShow = () => {
       overview: overview,
       date: date,
       type: type,
+      vote_average: vote_average,
     };
     console.log(show);
 
@@ -98,7 +100,14 @@ const SingleShow = () => {
               />
             </div>
             <div className="form-group">
-              <input className="show-title" value={title} />
+              <span
+                class="input"
+                className="show-title"
+                value={title}
+                contenteditable
+              >
+                {title}
+              </span>
             </div>
             <div className="form-group">
               <span
@@ -111,21 +120,23 @@ const SingleShow = () => {
                 {overview}
               </span>
             </div>
-            <div className="form-group row">
-              <label class="col-sm-3 col-form-label show-date">
-                First Air Date:
-              </label>
-              <div class="col-sm-9">
-                <input className="show-date" value={date} />
-              </div>
+            <div className="form-group">
+              <strong>User Score: </strong>
+              <span class="input" value={vote_average} contenteditable>
+                {vote_average}
+              </span>
             </div>
-            <div className="form-group row">
-              <label className="col-sm-3 col-form-label show-type">
-                Type of Show:
-              </label>
-              <div className="col-sm-9">
-                <input className="show-date" value={type} />
-              </div>
+            <div className="form-group">
+              <strong>Premier Date: </strong>
+              <span class="input" value={date} contenteditable>
+                {moment(date).format("MMMM Do, YYYY")}
+              </span>
+            </div>
+            <div className="form-group">
+              <strong>Type of Show: </strong>
+              <span class="input" value={type} contenteditable>
+                {type}
+              </span>
             </div>
             <button type="submit" className="btn btn-primary btn-block mb-5">
               Add TV Show to Watched List

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./Home";
+import Auth from "./Auth";
 import SingleShow from "./SingleShow";
 import SavedShows from "./SavedShows";
 import Navbar from "./Navbar";
@@ -15,6 +16,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route exact path="/auth">
+          <Auth />
         </Route>
         <Route exact path="/myshows">
           <SavedShows />

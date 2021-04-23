@@ -4,6 +4,7 @@ import { FaTv } from "react-icons/fa";
 import { Navbar, Nav } from "react-bootstrap";
 
 const Navigation = () => {
+  const user = null;
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand href="/">
@@ -16,8 +17,16 @@ const Navigation = () => {
           <Nav.Link href="/myshows">My Shows</Nav.Link>
         </Nav>
         <Nav>
-          <Nav.Link href="/">Login</Nav.Link>
-          <Nav.Link href="/">Logout</Nav.Link>
+          {user ? (
+            <>
+              <Nav.Link eventKey="disabled" disabled>
+                {user.result.name}
+              </Nav.Link>
+              <Nav.Link href="/">Logout</Nav.Link>
+            </>
+          ) : (
+            <Nav.Link href="/auth">Login</Nav.Link>
+          )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>

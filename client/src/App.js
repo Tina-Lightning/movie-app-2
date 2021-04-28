@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./Home";
-import Auth from "./Auth";
+import Auth from "./Auth/Auth";
 import SingleShow from "./SingleShow";
 import SavedShows from "./SavedShows";
 import Navbar from "./Navbar";

@@ -1,12 +1,34 @@
 import React, { useState } from "react";
 import { FaLock } from "react-icons/fa";
+import { GoogleLogin } from "react-google-login";
+import { useDispatch } from "react-redux";
 import Input from "./Input";
+import Icon from "./icon";
 
 const Auth = () => {
-  const isSignUp = true;
+  const [isSignUp, setIsSignUp] = useState(false);
+  const dispatch = useDispatch();
 
   const handleSubmit = () => {};
   const handleChange = () => {};
+  const switchMode = () => {
+    setIsSignUp((prevIsSignUp) => !prevIsSignUp);
+  };
+
+  const googleSuccess = async (res) => {
+    const result = res?.profileObj;
+    const token = res?.tokenId;
+
+    try {
+      dispatch({ type: "AUTH", data: { result, token } });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const googleFailure = (error) => {
+    console.log(error);
+    console.log("Google sign in was unsuccessful");
+  };
 
   return (
     <div className="container">
@@ -53,9 +75,35 @@ const Auth = () => {
               handleChange={handleChange}
             />
           )}
-          <button type="submit" class="btn btn-primary">
-            {isSignUp ? "Sign Up" : "Sign In"}
-          </button>
+          <div className="card">
+            <button type="submit" className="btn btn-primary">
+              {isSignUp ? "Sign Up" : "Sign In"}
+            </button>
+          </div>
+          <div className="card">
+            <GoogleLogin
+              clientId="410052920615-tmk08kcg9ap5j0ev8tdcd3c3npp19kib.apps.googleusercontent.com"
+              render={(renderProps) => (
+                <button
+                  onClick={renderProps.onClick}
+                  disabled={renderProps.disabled}
+                  //starticon={<Icon />}
+                >
+                  Google Sign In
+                </button>
+              )}
+              onSuccess={googleSuccess}
+              onFailure={googleFailure}
+              cookiePolicy="single_host_origin"
+            />
+          </div>
+          <div className="card">
+            <button onClick={switchMode}>
+              {isSignUp
+                ? "Already have an account? Sign In"
+                : "Don't have an account? Sign Up"}
+            </button>
+          </div>
         </form>
       </div>
     </div>

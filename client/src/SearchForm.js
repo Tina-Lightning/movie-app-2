@@ -16,7 +16,7 @@ const SearchForm = () => {
               onChange={(e) => setQuery(e.target.value)}
             />
             <div className="input-group-append">
-              <button class="btn btn-primary">
+              <button className="btn btn-primary">
                 <FaSearch />
               </button>
             </div>

@@ -101,7 +101,7 @@ const SingleShow = () => {
             </div>
             <div className="form-group">
               <span
-                class="input"
+                className="input"
                 className="show-title"
                 value={title}
                 contenteditable
@@ -111,7 +111,7 @@ const SingleShow = () => {
             </div>
             <div className="form-group">
               <span
-                class="input"
+                className="input"
                 className="show-overview"
                 role="textbox"
                 value={overview}
@@ -122,19 +122,19 @@ const SingleShow = () => {
             </div>
             <div className="form-group">
               <strong>User Score: </strong>
-              <span class="input" value={vote_average} contenteditable>
+              <span className="input" value={vote_average} contenteditable>
                 {vote_average}
               </span>
             </div>
             <div className="form-group">
               <strong>Premier Date: </strong>
-              <span class="input" value={date} contenteditable>
+              <span className="input" value={date} contenteditable>
                 {moment(date).format("MMMM Do, YYYY")}
               </span>
             </div>
             <div className="form-group">
               <strong>Type of Show: </strong>
-              <span class="input" value={type} contenteditable>
+              <span className="input" value={type} contenteditable>
                 {type}
               </span>
             </div>

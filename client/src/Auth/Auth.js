@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import { FaLock } from "react-icons/fa";
-import { GoogleLogin } from "react-google-login";
 import { useDispatch } from "react-redux";
+import { GoogleLogin } from "react-google-login";
+import { useHistory } from "react-router-dom";
+import { FaLock } from "react-icons/fa";
 import Input from "./Input";
 import Icon from "./icon";
+import { AUTH } from "../constants/actionTypes";
 
 const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = () => {};
   const handleChange = () => {};
@@ -20,11 +23,14 @@ const Auth = () => {
     const token = res?.tokenId;
 
     try {
-      dispatch({ type: "AUTH", data: { result, token } });
+      dispatch({ type: AUTH, data: { result, token } });
+
+      history.push("/");
     } catch (error) {
       console.log(error);
     }
   };
+
   const googleFailure = (error) => {
     console.log(error);
     console.log("Google sign in was unsuccessful");
@@ -87,7 +93,7 @@ const Auth = () => {
                 <button
                   onClick={renderProps.onClick}
                   disabled={renderProps.disabled}
-                  //starticon={<Icon />}
+                  variant="contained"
                 >
                   Google Sign In
                 </button>

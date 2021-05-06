@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import moment from "moment";
 import { useParams, Link } from "react-router-dom";
-import { API_ENDPOINT } from "./context";
+//import { API_ENDPOINT } from "./context";
 
 const url =
   "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png";
@@ -48,10 +48,10 @@ const SingleShow = () => {
   const {
     poster_path: poster,
     original_name: title,
-    overview: overview,
+    overview,
     first_air_date: date,
-    type: type,
-    vote_average: vote_average,
+    type,
+    vote_average,
   } = show;
 
   const handleSubmit = (e) => {
@@ -100,19 +100,13 @@ const SingleShow = () => {
               />
             </div>
             <div className="form-group">
-              <span
-                className="input"
-                className="show-title"
-                value={title}
-                contenteditable
-              >
+              <span className="input show-title" value={title} contenteditable>
                 {title}
               </span>
             </div>
             <div className="form-group">
               <span
-                className="input"
-                className="show-overview"
+                className="input show-overview"
                 role="textbox"
                 value={overview}
                 contenteditable

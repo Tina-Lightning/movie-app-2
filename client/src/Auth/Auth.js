@@ -4,16 +4,32 @@ import { GoogleLogin } from "react-google-login";
 import { useHistory } from "react-router-dom";
 import { FaLock } from "react-icons/fa";
 import Input from "./Input";
-import Icon from "./icon";
+//import Icon from "./icon";
 import { AUTH } from "../constants/actionTypes";
+
+const initialState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
 
 const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
+  const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleSubmit = () => {};
-  const handleChange = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData });
+  };
+
   const switchMode = () => {
     setIsSignUp((prevIsSignUp) => !prevIsSignUp);
   };

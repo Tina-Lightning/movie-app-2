@@ -6,6 +6,7 @@ import { FaLock } from "react-icons/fa";
 import Input from "./Input";
 //import Icon from "./icon";
 import { AUTH } from "../constants/actionTypes";
+import { signin, signup } from "../actions/auth";
 
 const initialState = {
   firstName: "",
@@ -23,18 +24,24 @@ const Auth = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ ...formData, [e.target.name]: e.target.value });
+    console.log(formData);
+
+    if (isSignUp) {
+      dispatch(signup(formData, history));
+    } else {
+      dispatch(signin(formData, history));
+    }
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData });
-  };
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const switchMode = () => {
     setIsSignUp((prevIsSignUp) => !prevIsSignUp);
   };
 
   const googleSuccess = async (res) => {
+    console.log(res);
     const result = res?.profileObj;
     const token = res?.tokenId;
 
